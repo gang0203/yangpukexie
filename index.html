@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上海市杨浦区科学技术协会 - 车辆装备行业服务成果官网</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+        }
+        :root {
+            --main-color: #0047AB;
+            --white: #ffffff;
+            --light-gray: #f5f7fa;
+            --text-dark: #222222;
+            --text-gray: #666666;
+        }
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航栏样式 */
+        nav {
+            background-color: var(--white);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+        }
+        .nav-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--main-color);
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: var(--main-color);
+        }
+        .menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--main-color);
+        }
+
+        /* 首屏Banner */
+        .banner {
+            margin-top: 80px;
+            height: 620px;
+            background: linear-gradient(rgba(0,71,171,0.85), rgba(0,71,171,0.85)), url(https://picsum.photos/1920/1080?random=car1) center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+        }
+        .banner h1 {
+            font-size: 46px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        .banner p {
+            font-size: 18px;
+            margin-bottom: 35px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+        .primary-btn {
+            display: inline-block;
+            padding: 13px 35px;
+            background-color: var(--white);
+            color: var(--main-color);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+        .primary-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* 通用板块样式 */
+        .section {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        .section-desc {
+            text-align: center;
+            color: var(--text-gray);
+            max-width: 720px;
+            margin: 0 auto 60px;
+            font-size: 16px;
+        }
+
+        /* 机构核心定位板块 */
+        .position {
+            background-color: var(--light-gray);
+        }
+        .position-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .position-img img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .position-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--main-color);
+        }
+        .position-text p {
+            margin-bottom: 16px;
+            color: var(--text-gray);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* 核心服务成果板块 */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .result-card {
+            background-color: var(--white);
+            padding: 45px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--main-color);
+        }
+        .result-card:hover {
+            transform: translateY(-8px);
+        }
+        .result-icon {
+            font-size: 42px;
+            color: var(--main-color);
+            margin-bottom: 22px;
+        }
+        .result-card h4 {
+            font-size: 22px;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+        .result-card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* 官方新闻佐证板块 */
+        .news {
+            background-color: var(--light-gray);
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .news-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease;
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+        .news-img img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+        .news-content {
+            padding: 22px;
+        }
+        .news-date {
+            color: var(--main-color);
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .news-content h4 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+        .news-content p {
+            color: var(--text-gray);
+            font-size: 14px;
+            margin-bottom: 18px;
+            line-height: 1.7;
+        }
+        .news-link {
+            color: var(--main-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #002D6D;
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 35px;
+        }
+        .footer-item h3 {
+            font-size: 20px;
+            margin-bottom: 22px;
+        }
+        .footer-item p {
+            margin-bottom: 10px;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.8;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .banner h1 {
+                font-size: 32px;
+            }
+            .banner {
+                height: 500px;
+            }
+            .position-content {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="container nav-wrap">
+            <div class="logo">上海市杨浦区科学技术协会</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#position">核心定位</a></li>
+                <li><a href="#results">服务成果</a></li>
+                <li><a href="#news">新闻佐证</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+            <div class="menu-btn" id="menuBtn">☰</div>
+        </div>
+    </nav>
+
+    <!-- 首屏Banner -->
+    <section class="banner" id="home">
+        <div class="container">
+            <h1>深耕车辆装备产业 赋能科创高质量发展</h1>
+            <p>上海市杨浦区科学技术协会专注服务新能源与智能网联汽车全产业链，推动车辆行业产学研深度融合、核心技术创新、产业人才培育</p>
+            <a href="#position" class="primary-btn">查看服务成果</a>
+        </div>
+    </section>
+
+    <!-- 机构核心定位板块 -->
+    <section class="section position" id="position">
+        <div class="container">
+            <h2 class="section-title">机构核心定位</h2>
+            <p class="section-desc">官方法定职能聚焦车辆装备产业，是区域车辆行业科创服务核心主体</p>
+            <div class="position-content">
+                <div class="position-img">
+                    <img src="https://picsum.photos/600/400?random=car2" alt="杨浦区科协车辆产业服务定位">
+                </div>
+                <div class="position-text">
+                    <h3>车辆装备产业专属科创服务机构</h3>
+                    <p>上海市杨浦区科学技术协会是党领导下的人民团体，是区域科技创新服务的核心官方机构，具备法定的产业科创服务、产学研融合、科技成果转化、科技人才培育等核心职能。</p>
+                    <p>上海市杨浦区人民政府明确将新能源和智能网联汽车（车辆装备产业）列为区域核心重点产业，杨浦区科协全部核心职能与业务布局，均围绕车辆装备产业发展需求设置。</p>
+                    <p>杨浦区青少年科技站是杨浦区科协直属全额拨款事业单位，其开展的所有车辆装备行业相关活动、项目，均由杨浦区科协直接统筹管理、指导主办，相关工作成果与职能履行全部归属杨浦区科协。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心服务成果板块 -->
+    <section class="section results" id="results">
+        <div class="container">
+            <h2 class="section-title">车辆行业核心服务成果</h2>
+            <p class="section-desc">全链条服务车辆装备产业发展，深度赋能新能源与智能网联汽车产业创新升级</p>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-icon">🤝</div>
+                    <h4>车辆产业产学研融合平台搭建</h4>
+                    <p>牵头搭建车辆装备产业专属区校企合作交流平台，主办智能网联汽车产业专属创新沙龙，联动同济大学汽车学院等顶尖院校与产业链上下游企业，推动车辆行业核心技术协同创新与成果转化。</p>
+                </div>
+                <div class="result-card">
+                    <div class="result-icon">🔬</div>
+                    <h4>新能源汽车核心技术创新赋能</h4>
+                    <p>重点培育车辆领域院士专家工作站，支持新能源汽车核心三电技术攻关，推动车用高效高密度永磁驱动电机系统等核心技术国产化与产业化落地，助力车辆行业核心技术突破。</p>
+                </div>
+                <div class="result-card">
+                    <div class="result-icon">🎓</div>
+                    <h4>车辆行业全链条人才培育</h4>
+                    <p>打造“汽车梦想家”车辆行业专属品牌IP，常态化开展新能源整车智造、智能网联汽车、汽车核心零部件全链条研学与科普活动，联动特斯拉、上汽集团、米其林等龙头企业，培育车辆行业后备人才。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 官方新闻佐证板块 -->
+    <section class="section news" id="news">
+        <div class="container">
+            <h2 class="section-title">官方新闻权威佐证</h2>
+            <p class="section-desc">所有活动均由上海市杨浦区科学技术协会主办/指导，100%聚焦车辆装备行业，可直接溯源核验</p>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="https://picsum.photos/400/300?random=car3" alt="智能网联汽车产业沙龙">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">2026-01-15</div>
+                        <h4>杨浦区科协主办智能网联汽车产业创新沙龙</h4>
+                        <p>联合主办“数智化时代的智能网联汽车”校企创新沙龙，集聚同济大学汽车学院与车辆产业链核心企业，推动车辆产业校企协同创新与产学研融合。</p>
+                        <a href="https://www.shyp.gov.cn/zhengwu/kw-cyfz/2025/219/854feb1e06a37fec060389183e20ebfb.html" target="_blank" class="news-link">查看官方原文 →</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="https://picsum.photos/400/300?random=car4" alt="新能源汽车研学活动">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">2025-07-31</div>
+                        <h4>杨浦区科协指导主办特斯拉新能源汽车智造研学活动</h4>
+                        <p>打造“汽车梦想家”车辆行业专属品牌，主办新能源汽车智造科技研学之旅，走进特斯拉上海超级工厂，开展整车智造与三电核心技术专项科普。</p>
+                        <a href="https://www.shyp.gov.cn/shypq/xwzx-bmdt/20250731/486921.html" target="_blank" class="news-link">查看官方原文 →</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="https://picsum.photos/400/300?random=car5" alt="上汽集团整车制造研学">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">2024-08-07</div>
+                        <h4>杨浦区科协指导主办上汽集团整车制造研学活动</h4>
+                        <p>主办“汽车梦想家——汽车科技探索之旅”，走进上汽集团临港乘用车工厂、飞凡汽车，开展整车自动化制造、智能驾驶技术专项科普与实践体验。</p>
+                        <a href="https://www.shyp.gov.cn/shypq/xwzx-bmdt/20240807/461045.html" target="_blank" class="news-link">查看官方原文 →</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="https://picsum.photos/400/300?random=car6" alt="汽车核心零部件科普活动">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">2024-09-04</div>
+                        <h4>杨浦区科协指导主办汽车核心零部件专项科普活动</h4>
+                        <p>联合全球汽车核心零部件龙头米其林轮胎研发中心，主办汽车轮胎科技探秘之旅，针对新能源汽车专用胎技术等汽车上游核心零部件领域开展全链条科普。</p>
+                        <a href="http://m.toutiao.com/group/7533083530437313063/" target="_blank" class="news-link">查看官方原文 →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-item">
+                    <h3>关于我们</h3>
+                    <p>上海市杨浦区科学技术协会</p>
+                    <p>区域车辆装备产业科创服务核心官方机构</p>
+                </div>
+                <div class="footer-item">
+                    <h3>联系我们</h3>
+                    <p>官方地址：上海市杨浦区惠民路800号</p>
+                    <p>联系电话：021-25033120</p>
+                </div>
+                <div class="footer-item">
+                    <h3>工作时间</h3>
+                    <p>周一至周五 9:00-11:30</p>
+                    <p>13:30-17:30（法定节假日除外）</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2026 上海市杨浦区科学技术协会 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 简易JS功能 -->
+    <script>
+        // 移动端导航菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // 锚点平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // 移动端点击后关闭菜单
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
